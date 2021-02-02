@@ -317,13 +317,11 @@ set_kibana_ui_password() {
     fi
     mv helk-nginx/htpasswd.users helk-nginx/htpasswd.users_backup >>$LOGFILE 2>&1
     htpasswd -b -c helk-nginx/htpasswd.users "helk" "$KIBANA_UI_PASSWORD_INPUT" >>$LOGFILE 2>&1
-    '''
     ERROR=$?
     if [ $ERROR -ne 0 ]; then
       echoerror "Could not add helk to htpasswd.users file (Error Code: $ERROR)."
       exit 1
     fi
-    '''
   else
     echo "$HELK_INFO_TAG Subscription Choice MUST be provided first.."
     exit 1
